@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Dice</title>
+</head>
+<body>
+    <!-- &lt;%= %&gt; lt = lessthan gt greater than -->
+    <h1>Dice gave value using &lt;%= %&gt; tag: <%= diceVal %></h1>
+    <hr>
+    <h1>Dice gave value using " Scriplet tag" &lt;% %&gt; : <%= diceVal %>
+    <% if(diceVal == 6){ %>
+        <h2>Wow!! Roll the Dice again!!!</h2>
+    <% } %>
+    </h1>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel = "stylesheet" href = "/style.css">
+</head>
+<style>
+
+</style>
+<body>
+    <div class="heading">
+        <div class="insta">
+            <h1>Instagram</h1>
+        </div>
+        
+        <div class="btn">
+            <button style = "background-color:blue; color:#fff">Login</button>
+            <button>Sign up</button>
+        </div>
+       
+    </div>
+    <hr>
+    <div class="main_container">
+        <h2>This Account Belongs to : <%= data.name %></h2>
+        <h3>Followers: <%= data.followers %></h3>
+        <h3>Following: <%= data.following %></h3>
+
+    </div>
+    <hr>
+    <div class="pics">
+        <% for(let pic of data.posts){%>
+            <img src = "<%= pic.image %>" alt = "images"/>
+            <p>Likes: <%= pic.likes %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Comments: <%= pic.comments %></p>
+        <% } %>
+    </div>
+    
+
+</body>
+</html>
