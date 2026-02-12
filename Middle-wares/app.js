@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const myError = require("./ExpressError");
 
 // Simple middleware
 // app.use((req, res,next) => {
@@ -21,7 +22,7 @@ const checkToken = (req, res, next) => {
     if (token === "giveaccess") {
         next();
     }
-    throw new Error("ACCESS DENIED!");
+    throw new myError(401,"ACCESS DENIED!");
 };
 
 app.use("/api", checkToken,(req, res) => {
@@ -38,7 +39,23 @@ app.use((req, res, next) => {
     next();
 });
 
+// custom error handling
+app.get("/err", (req, res) => {
+    abcd = abc;
+});
+// app.use((err, req, res, next) => {
+//     console.log("------ERROR------");
+//     res.send(err);
+// })
 
+// default status and message
+
+app.use((err, req, res, next) => {
+    let { status = 500, message = "Some Error Occured" } = err;
+    res.status(status).send(message );
+});
+
+//route page
 app.get("/", (req, res) => {
     res.send("root page");
 });
@@ -46,6 +63,8 @@ app.get("/", (req, res) => {
 app.get("/random", (req, res) => {
     res.send("this is random page");
 });
+
+
 
 app.listen(3000, () => {
     console.log("server is listening to port 3000");
